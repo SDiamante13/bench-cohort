@@ -1,3 +1,4 @@
 rootProject.name = 'bench-cohort'
 include 'leap-year-kata'
+include 'fizz-buzz'
 

@@ -22,7 +22,7 @@ subprojects {
         testImplementation "org.junit.jupiter:junit-jupiter-params:$jUnitVersion"
     }
 
-    group 'tech.pathtoprogramming'
+    group 'com.kinandcarta'
     version '1.0-SNAPSHOT'
 
     sourceCompatibility = 11
