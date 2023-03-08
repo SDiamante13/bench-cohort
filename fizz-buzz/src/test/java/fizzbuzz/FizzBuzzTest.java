@@ -15,17 +15,17 @@ class FizzBuzzTest {
     @Test
     void returnsFizzForNumberDivisibleBy3() {
         assertThat(FizzBuzz.calculate(3)).isEqualTo("Fizz");
+        assertThat(FizzBuzz.calculate(6)).isEqualTo("Fizz");
     }
+
     static class FizzBuzz {
 
         public static String calculate(int i) {
-            if(i == 2) {
-                return "2";
-            }
-            else if(i == 3)
+            if ( i % 3 == 0 ) {
                 return "Fizz";
+            }
 
-            return "1";
+            return Integer.toString( i );
         }
     }
 }
