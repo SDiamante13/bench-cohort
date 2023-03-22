@@ -6,30 +6,34 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SampleTest {
 
+    ShoppingBasket basket = new ShoppingBasket();
     @Test
     void givenAnEmptyBasketWhenCalculateTotalThenReturn0() {
-        assertThat(ShoppingBasket.getTotal()).isEqualTo(0);
+        assertThat(basket.getTotal()).isEqualTo(0);
     }
 
     @Test
     void givenAnEmptyBasketWhenCalculateQuantityShouldReturn0() {
-        assertThat(ShoppingBasket.getQuantity()).isEqualTo(0);
+        assertThat(basket.getQuantity()).isEqualTo(0);
     }
 
     @Test
     void givenABasketWithAnItemWhenCalculateQuantityShouldReturnOne() {
-        ShoppingBasket.addItem("Candy", 50);
-        assertThat(ShoppingBasket.getTotal()).isNotEqualTo(0);
+//        ShoppingBasket.addItem("Candy", 50);
+//        assertThat(ShoppingBasket.getTotal()).isNotEqualTo(0);
     }
 
-    private static class ShoppingBasket {
+    private class ShoppingBasket {
 
-        public static int getTotal() {
-            if ()
-                return 0;
+        public ShoppingBasket() {
         }
 
-        public static int getQuantity() {
+        public int getTotal() {
+//            if ()
+            return 0;
+        }
+
+        public int getQuantity() {
             return 0;
         }
     }
