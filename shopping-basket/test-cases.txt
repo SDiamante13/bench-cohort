@@ -1,0 +1,9 @@
+- find quantity of item not in the basket -> 0
+- find quantity of item that is in the basket -> 1
+
+
+- total price of empty basket: 0 items -> $0
+- total price of a basket with $100 worth of items -> $100
+- total price of a basket with $120 worth of items -> $114
+- total price of a basket with $200 worth of items -> $190
+- total price of a basket with $210 worth of items -> $189
