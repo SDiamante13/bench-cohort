@@ -3,10 +3,8 @@ package shoppingbasket;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import static java.util.Collections.emptyList;
 import static java.util.Collections.emptyMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -41,6 +39,14 @@ class ShoppingBasketTest {
         int total = shoppingBasket.calculateTotal();
 
         assertThat(total).isEqualTo(11);
+    }
+
+    @Test
+    void shouldCalculateTotalPriceOfItemsWithQuantityGreaterThanOne() {
+        Map<String, Item> oneItem = new HashMap<>();
+        oneItem.put("Bread", new Item(20, 5));
+
+        ShoppingBasket shoppingBasket = new ShoppingBasket(oneItem);
 
     }
 
@@ -53,13 +59,9 @@ class ShoppingBasketTest {
         }
 
         public int calculateTotal() {
-            if(items.isEmpty()) {
-                return 0;
-            }
-
             int total = 0;
-            for (Item item: items.values()) {
-                total += item.price;
+            for (Item item : items.values()) {
+                total += item.getPrice();
             }
 
             return total;
@@ -68,13 +70,22 @@ class ShoppingBasketTest {
 
 
     private class Item {
-
         private int price;
+
         private int quantity;
+
+        public int getPrice() {
+            return price;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
 
         public Item(int price, int quantity) {
             this.price = price;
             this.quantity = quantity;
         }
     }
+
 }
