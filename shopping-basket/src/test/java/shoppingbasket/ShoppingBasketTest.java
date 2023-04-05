@@ -32,5 +32,14 @@ class ShoppingBasketTest {
 
     @Test
     void shouldCalculateTotalPriceForNoItems() {
+        ShoppingBasket shoppingBasket = new ShoppingBasket();
+        assertThat(shoppingBasket.calculateTotal()).isEqualTo(0);
+    }
+
+
+    private class ShoppingBasket {
+        public int calculateTotal() {
+            return 0;
+        }
     }
 }
