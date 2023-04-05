@@ -2,6 +2,11 @@ package shoppingbasket;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+import java.util.Map;
+
+import static java.util.Collections.emptyList;
+import static java.util.Collections.emptyMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ShoppingBasketTest {
@@ -32,14 +37,43 @@ class ShoppingBasketTest {
 
     @Test
     void shouldCalculateTotalPriceForNoItems() {
+        ShoppingBasket shoppingBasket = new ShoppingBasket(emptyMap());
+
+        int total = shoppingBasket.calculateTotal();
+
+        assertThat(total).isZero();
+    }
+
+    @Test
+    void shouldCalculateTotalPriceOfOneItem() {
+        //1 item of $10 -> $10
         ShoppingBasket shoppingBasket = new ShoppingBasket();
-        assertThat(shoppingBasket.calculateTotal()).isEqualTo(0);
+        int total = shoppingBasket.calculateTotal();
+        assertThat(total).isEqualTo(10);
+    }
+
+    private class ShoppingBasket {
+
+        private Map<String, Item> items;
+
+        public ShoppingBasket(Map<String, Item> items) {
+            this.items = items;
+        }
+
+        public int calculateTotal() {
+            return 0;
+        }
     }
 
 
-    private class ShoppingBasket {
-        public int calculateTotal() {
-            return 0;
+    private class Item {
+
+        private int price;
+        private int quantity;
+
+        public Item(int price, int quantity) {
+            this.price = price;
+            this.quantity = quantity;
         }
     }
 }
