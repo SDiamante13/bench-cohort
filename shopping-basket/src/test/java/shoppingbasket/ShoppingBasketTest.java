@@ -64,4 +64,15 @@ class ShoppingBasketTest {
 
         assertThat(total).isEqualTo(95.95f);
     }
+
+    @Test
+    void shouldApply10PercentDiscountForOrderOver200() {
+        Map<String, Item> oneItemMoreThan200USD = new HashMap<>();
+        oneItemMoreThan200USD.put("Expensive TV", new Item(220, 1));
+
+        ShoppingBasket shoppingBasket = new ShoppingBasket(oneItemMoreThan200USD);
+        float total = shoppingBasket.calculateTotal();
+
+        assertThat(total).isEqualTo(198);
+    }
 }

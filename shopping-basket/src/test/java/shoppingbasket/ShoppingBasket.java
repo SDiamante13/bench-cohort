@@ -15,6 +15,12 @@ class ShoppingBasket {
         for (Item item : items.values()) {
             total += item.calculateSubTotal();
         }
+        
+
+
+        if(total > 200){
+            return total * 0.9f;
+        }
 
         if (total > 100) {
             return total * 0.95f;
