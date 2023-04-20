@@ -1,6 +1,5 @@
 package gameoflife;
 
-// import com.sun.imageio.plugins.tiff.TIFFFaxCompressor;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,6 +17,34 @@ class CellTest {
         Cell cell = new Cell(CellState.DEAD);
         assertThat(cell.nextState(2)).isEqualTo(CellState.DEAD);
     }
+
+    @Test
+    void deadCellWithThreeNeighborLives() {
+        Cell cell = new Cell(CellState.DEAD);
+        assertThat(cell.nextState(3)).isEqualTo(CellState.ALIVE);
+    }
+
+    @Test
+    void liveCellWithOneLiveNeighborDies() {
+        Cell cell = new Cell(CellState.ALIVE);
+
+        assertThat(cell.nextState(1)).isEqualTo(CellState.DEAD);
+    }
+
+    @Test
+    void liveCellWithThreeLiveNeighborsLives() {
+        Cell cell = new Cell(CellState.ALIVE);
+
+        assertThat(cell.nextState(3)).isEqualTo(CellState.ALIVE);
+    }
+
+    @Test
+    void liveCellWithTwoLiveNeighborsLives() {
+        Cell cell = new Cell(CellState.ALIVE);
+
+        assertThat(cell.nextState(2)).isEqualTo(CellState.ALIVE);
+    }
+
     private class Cell {
 
         public Cell(CellState cellState) {
@@ -25,6 +52,9 @@ class CellTest {
         }
 
         public CellState nextState(int liveNeighbors) {
+            if (liveNeighbors == 3 ) {
+                return CellState.ALIVE;
+            }
             return CellState.DEAD;
         }
     }

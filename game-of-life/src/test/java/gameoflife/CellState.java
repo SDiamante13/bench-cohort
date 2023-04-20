@@ -1,7 +1,6 @@
 package gameoflife;
 
 public enum CellState {
-    DEAD
-
-
+    DEAD,
+    ALIVE
 }
