@@ -47,12 +47,24 @@ class CellTest {
 
     private class Cell {
 
-        public Cell(CellState cellState) {
+        private final CellState cellState;
 
+        public Cell(CellState cellState) {
+            this.cellState = cellState;
         }
 
         public CellState nextState(int liveNeighbors) {
+            if (cellState.equals(CellState.ALIVE)) {
+                return nextStateOfAliveCell(liveNeighbors);
+            }
             if (liveNeighbors == 3 ) {
+                return CellState.ALIVE;
+            }
+            return CellState.DEAD;
+        }
+
+        private CellState nextStateOfAliveCell(int liveNeighbors) {
+            if (liveNeighbors == 3 || liveNeighbors == 2) {
                 return CellState.ALIVE;
             }
             return CellState.DEAD;
