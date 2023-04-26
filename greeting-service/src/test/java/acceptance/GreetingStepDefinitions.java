@@ -5,7 +5,9 @@ import io.cucumber.java.en.When;
 import org.springframework.test.web.servlet.ResultActions;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class GreetingStepDefinitions extends SpringAcceptanceTest {
 
@@ -19,6 +21,8 @@ public class GreetingStepDefinitions extends SpringAcceptanceTest {
     @Then("the system will reply with {string}")
     public void the_system_will_reply_with(String greeting) throws Exception {
         resultActions
-                .andExpect(content().string(greeting));
+                .andExpect(status().isOk())
+                .andExpect(content().string(greeting))
+                .andDo(print());
     }
 }
