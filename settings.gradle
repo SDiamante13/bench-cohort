@@ -6,4 +6,5 @@ include 'game-of-life'
 include 'greeting-service'
 include 'yatzy'
 include 'movie-rental'
+include 'gilded-rose'
 
