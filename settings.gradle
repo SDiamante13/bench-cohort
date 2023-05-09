@@ -7,4 +7,5 @@ include 'greeting-service'
 include 'yatzy'
 include 'movie-rental'
 include 'gilded-rose'
+include 'primitive-obsession'
 
