@@ -8,7 +8,7 @@ public class Person {
     public static final int USER_ROLE_SALES = 3;
 
     private int role;
-    private String swedishPersonalNumber;
+    private PersonalNumber swedishPersonalNumber;
     private String phoneNumber;
 
     public Person(int role, String swedishPersonalNumber, String phoneNumber) {
@@ -27,7 +27,7 @@ public class Person {
         this.role = role;
     }
 
-    public String getSwedishPersonalNumber() {
+    public PersonalNumber getSwedishPersonalNumber() {
         return swedishPersonalNumber;
     }
 
@@ -35,7 +35,7 @@ public class Person {
         swedishPersonalNumber = swedishPersonalNumber.replace("-", "");
         if (swedishPersonalNumber.length() != 12)
             throw new IllegalArgumentException("invalid personal number " + swedishPersonalNumber);
-        this.swedishPersonalNumber = swedishPersonalNumber;
+        this.swedishPersonalNumber = new PersonalNumber(swedishPersonalNumber);
     }
 
     public String getPhoneNumber() {
@@ -44,11 +44,6 @@ public class Person {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public int birthYear() {
-        String year = swedishPersonalNumber.substring(0, 4);
-        return Integer.parseInt(year);
     }
 
     public String countryCode() {
