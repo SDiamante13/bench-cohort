@@ -2,12 +2,9 @@ package primitiveobsession;
 
 public class Person {
 
-    public static final int USER_ROLE_ADMIN = 0;
-    public static final int USER_ROLE_ENGINEER = 1;
-    public static final int USER_ROLE_MANAGER = 2;
-    public static final int USER_ROLE_SALES = 3;
 
-    private int role;
+
+    UserRole userRole;
     private PersonalNumber swedishPersonalNumber;
     private PhoneNumber phoneNumber;
 
@@ -17,14 +14,14 @@ public class Person {
         this.setPhoneNumber(phoneNumber);
     }
 
-    public int getRole() {
-        return role;
+    public UserRole getRole() {
+        return this.userRole;
     }
 
     public void setRole(int role) {
         if (role < 0 || role > 4)
             throw new IllegalArgumentException("illegal role" + role);
-        this.role = role;
+        this.userRole = new UserRole(role);
     }
 
     public PersonalNumber getSwedishPersonalNumber() {
@@ -46,7 +43,4 @@ public class Person {
         this.phoneNumber = new PhoneNumber(phoneNumber);
     }
 
-    public boolean canDeleteUsers() {
-        return this.role == Person.USER_ROLE_MANAGER || this.role == Person.USER_ROLE_ADMIN;
-    }
 }

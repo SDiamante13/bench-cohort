@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class PersonTest {
 
     String swedishPersonalNumber = "19511111-7668";
-    int role = Person.USER_ROLE_MANAGER;
+    int role = UserRole.USER_ROLE_MANAGER;
     String phoneNumber = "00467123456";
 
     @Test
@@ -28,28 +28,28 @@ class PersonTest {
     void managersCanDeleteUsers() {
         Person person = new Person(role, swedishPersonalNumber, phoneNumber);
 
-        assertThat(person.canDeleteUsers()).isTrue();
+        assertThat(person.userRole.canDeleteUsers()).isTrue();
     }
 
     @Test
     void adminCanDeleteUsers() {
-        Person person = new Person(Person.USER_ROLE_ADMIN, swedishPersonalNumber, phoneNumber);
+        Person person = new Person(UserRole.USER_ROLE_ADMIN, swedishPersonalNumber, phoneNumber);
 
-        assertThat(person.canDeleteUsers()).isTrue();
+        assertThat(person.userRole.canDeleteUsers()).isTrue();
     }
 
     @Test
     void salesCantDeleteUsers() {
-        Person person = new Person(Person.USER_ROLE_SALES, swedishPersonalNumber, phoneNumber);
+        Person person = new Person(UserRole.USER_ROLE_SALES, swedishPersonalNumber, phoneNumber);
 
-        assertThat(person.canDeleteUsers()).isFalse();
+        assertThat(person.userRole.canDeleteUsers()).isFalse();
     }
 
     @Test
     void engineersCantDeleteUsers() {
-        Person person = new Person(Person.USER_ROLE_ENGINEER, swedishPersonalNumber, phoneNumber);
+        Person person = new Person(UserRole.USER_ROLE_ENGINEER, swedishPersonalNumber, phoneNumber);
 
-        assertThat(person.canDeleteUsers()).isFalse();
+        assertThat(person.userRole.canDeleteUsers()).isFalse();
     }
 
     @Test
