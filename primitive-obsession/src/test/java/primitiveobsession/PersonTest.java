@@ -21,7 +21,7 @@ class PersonTest {
     void countryCode() {
         Person person = new Person(role, swedishPersonalNumber, phoneNumber);
 
-        assertThat(person.countryCode()).isEqualTo("+46");
+        assertThat(person.getPhoneNumber().countryCode()).isEqualTo("+46");
     }
 
     @Test
@@ -56,13 +56,13 @@ class PersonTest {
     void standardizePhoneNumber() {
         Person person = new Person(role, swedishPersonalNumber, "+46123456");
 
-        assertThat(person.countryCode()).isEqualTo("+46");
+        assertThat(person.getPhoneNumber().countryCode()).isEqualTo("+46");
     }
 
     @Test
     void standardizeLocalPhoneNumber() {
         Person person = new Person(role, swedishPersonalNumber, "0123456");
 
-        assertThat(person.countryCode()).isEmpty();
+        assertThat(person.getPhoneNumber().countryCode()).isEmpty();
     }
 }

@@ -9,12 +9,12 @@ public class Person {
 
     private int role;
     private PersonalNumber swedishPersonalNumber;
-    private String phoneNumber;
+    private PhoneNumber phoneNumber;
 
     public Person(int role, String swedishPersonalNumber, String phoneNumber) {
         setRole(role);
         setSwedishPersonalNumber(swedishPersonalNumber);
-        this.phoneNumber = phoneNumber;
+        this.setPhoneNumber(phoneNumber);
     }
 
     public int getRole() {
@@ -38,23 +38,12 @@ public class Person {
         this.swedishPersonalNumber = new PersonalNumber(swedishPersonalNumber);
     }
 
-    public String getPhoneNumber() {
+    public PhoneNumber getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String countryCode() {
-        String code = "";
-        if (phoneNumber.startsWith("00"))
-            code = phoneNumber.substring(2, 4);
-        else if (phoneNumber.startsWith("+"))
-            code = phoneNumber.substring(1,3);
-        if (!code.isEmpty())
-            return "+" + code;
-        return "";
+        this.phoneNumber = new PhoneNumber(phoneNumber);
     }
 
     public boolean canDeleteUsers() {
