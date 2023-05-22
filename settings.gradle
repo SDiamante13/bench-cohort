@@ -9,4 +9,5 @@ include 'movie-rental'
 include 'gilded-rose'
 include 'primitive-obsession'
 include 'polymorphism'
+include 'legacy-code'
 
