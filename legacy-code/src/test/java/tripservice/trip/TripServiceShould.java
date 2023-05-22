@@ -1,4 +1,4 @@
-package tripservicekata.trip;
+package tripservice.trip;
 
 public class TripServiceShould {
 	

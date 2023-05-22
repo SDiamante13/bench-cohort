@@ -1,4 +1,4 @@
-package tripservicekata.user;
+package tripservice.user;
 
 public class UserShould {
 
