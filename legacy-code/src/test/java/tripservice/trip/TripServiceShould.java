@@ -5,7 +5,6 @@ import org.mockito.Mockito;
 import tripservice.exception.UserNotLoggedInException;
 import tripservice.user.User;
 
-import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -48,18 +47,21 @@ class TripServiceShould {
     }
 
     @Test
-    void isFriends() {
+    void returnsTripsOfSearchedUserWhenTheyAreFriendsWithTheLoggedInUser() {
         User searchedUser = new User();
         User loggedInUser = new User();
         searchedUser.addFriend(loggedInUser);
-
-
         List<Trip> expectedTrips = List.of(new Trip());
-        doReturn(expectedTrips)
-                .when(tripService)
-                .findTripsBy(any(User.class));
+        stub(expectedTrips);
+
         List<Trip> trips = tripService.getTripsByUser(searchedUser, loggedInUser);
 
         assertThat(trips).isEqualTo(expectedTrips);
+    }
+
+    private void stub(List<Trip> expectedTrips) {
+        doReturn(expectedTrips)
+                .when(tripService)
+                .findTripsBy(any(User.class));
     }
 }
